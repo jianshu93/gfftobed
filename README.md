@@ -14,11 +14,13 @@ Clone this repository, and `make` or `make clean`
 
 
 USAGE:
-	gfftobed [options] <input_file_GFF3>
+	`gfftobed [options] <input_file_GFF3>`
+
 
 Extracts genomic coordinates of features from GFF3
--g/--gene			extract gene features in bed format
--e/--exons			extract exon features in bed format
+--------------------------------------------------------
+-g/--gene|extract gene features in bed format
+-e/--exons|extract exon features in bed format
 -c/--cds			extract CDS features in bed format
 -m/--mrna			extract mRNA features in bed format
 -t/--tss			extract tss features in bed format
