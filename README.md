@@ -10,3 +10,26 @@ This program takes an input genome annotation in GFF3 format and converts specif
 Clone this repository, and `make` or `make clean`
 
 
+## Usage
+
+
+USAGE:
+	gfftobed [options] <input_file_GFF3>
+
+Extracts genomic coordinates of features from GFF3
+-g/--gene			extract gene features in bed format
+-e/--exons			extract exon features in bed format
+-c/--cds			extract CDS features in bed format
+-m/--mrna			extract mRNA features in bed format
+-t/--tss			extract tss features in bed format
+-f/--feature <feat>		extract custom features (i.e. ncRNA)
+
+Extracts genomic coordinates of features with window around feature
+-w/--window <int>		add <int> basepairs upstream and downstream of feature
+-u/--upstream <int>		add <int> basepairs upstream/5' of feature
+-d/--downstream <int>		add <int> basepairs downstream/3' of feature
+
+-a/--attribute <string>		Specify attribute for name column ('note' by default)
+-h/--help			Print this help message
+  
+  
