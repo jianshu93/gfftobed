@@ -21,11 +21,11 @@ Option|Description
 -c/--cds|extract CDS features in bed format
 -m/--mrna|extract mRNA features in bed format
 -t/--tss|extract tss features in bed format
--f/--feature <feat>|extract custom features (i.e. ncRNA)
--w/--window <int>|add <int> basepairs upstream and downstream of feature
--u/--upstream <int>|add <int> basepairs upstream/5' of feature
--d/--downstream <int>|add <int> basepairs downstream/3' of feature
--a/--attribute <string>|Specify attribute for name column ('note' by default)
+-f/--feature `<feat>`|extract custom features (i.e. ncRNA)
+-w/--window `<int>`|add `<int>` basepairs upstream and downstream of feature
+-u/--upstream `<int>`|add `<int>` basepairs upstream/5' of feature
+-d/--downstream `<int>`|add `<int>` basepairs downstream/3' of feature
+-a/--attribute `<string>`|Specify attribute for name column ('note' by default)
 -h/--help|Print help message
 	
 	
