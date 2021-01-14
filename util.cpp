@@ -106,8 +106,10 @@ int setopts(int argc, char **argv, std::string* feat, int* wfla, int* interv, st
         case 'a':
           aflag =1;
           ttoken = optarg;
+          break;
         case 'G':
           ftype_flag = 1;
+          break;
 
         case '?':
           break;
