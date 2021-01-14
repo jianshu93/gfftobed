@@ -22,24 +22,23 @@ void print_usage(){
   printf("-d/--downstream <int>\t\tadd <int> basepairs downstream/3' of feature\n\n");
 
   printf("-a/--attribute <string>\t\tSpecify attribute for name column ('note' by default)\n");
+  printf("-G/--GTF\t\t\tInput file is in GTF format\n");
 
 
   printf("-h/--help\t\t\tPrint this help message\n\n");
-printf("This is a work in progress designed for a specific GFF3 but\n");
-printf("will likely work with others. Pay attention to the naming\n");
-printf("conventions and validity of your input GFF3. \n");
+
   exit (EXIT_FAILURE);
 }
 
 
 
 
-int setopts(int argc, char **argv, std::string* feat, int* wfla, int* interv, std::string* token){
+int setopts(int argc, char **argv, std::string* feat, int* wfla, int* interv, std::string* token, int*gtflag){
   int c;
 
     std::string feat_extract;
     std::string ttoken;
-    int window,wflag=0,aflag=0;
+    int window,wflag=0,aflag=0, ftype_flag=0;
 
   while (1)
     {
@@ -56,12 +55,13 @@ int setopts(int argc, char **argv, std::string* feat, int* wfla, int* interv, st
           {"upstream",        required_argument,             0,   'u'},
           {"downstream",        required_argument,             0,   'd'},
           {"attribute",        required_argument,             0,   'a'},
+          {"GTF",        required_argument,             0,   'G'},
           {0, 0, 0, 0}
         };
 
       int option_index = 0;
 
-      c = getopt_long (argc, argv, "hgecmtf:w:u:d:a:",
+      c = getopt_long (argc, argv, "hgecmtf:w:u:d:a:G",
                        long_options, &option_index);
 
 
@@ -106,6 +106,8 @@ int setopts(int argc, char **argv, std::string* feat, int* wfla, int* interv, st
         case 'a':
           aflag =1;
           ttoken = optarg;
+        case 'G':
+          ftype_flag = 1;
 
         case '?':
           break;
@@ -121,6 +123,7 @@ int setopts(int argc, char **argv, std::string* feat, int* wfla, int* interv, st
 
     *feat = feat_extract;
     *wfla = wflag;
+    *gtflag = ftype_flag;
 
     if(wflag==1 || wflag ==2 || wflag ==3){
     *interv = window;
@@ -129,6 +132,8 @@ int setopts(int argc, char **argv, std::string* feat, int* wfla, int* interv, st
     if(aflag==1){
       *token=ttoken;
     } else {*token = "note";}
+
+
 
 
     return 0;
