@@ -1,7 +1,8 @@
 pname := gfftobed
 
 CXX := g++
-CXXFLAGS := -std=c++11
+CXXFLAGS := -std=c++11 -O3
+
 
 srcfs := $(shell find . -name "*.cpp")
 objs  := $(patsubst %.cpp, %.o, $(srcfs))
@@ -9,7 +10,7 @@ objs  := $(patsubst %.cpp, %.o, $(srcfs))
 all: $(pname)
 
 $(pname): $(objs)
-	$(CXX) $(CXXFLAGS) $(LDFLAGS) -O3 -o $(pname) $(objs) $(LDLIBS)
+	$(CXX) $(CXXFLAGS) $(LDFLAGS) -o $(pname) $(objs) $(LDLIBS)
 
 depend: .depend
 
