@@ -27,10 +27,8 @@ Option|Description
 -d/--downstream `<int>`|add `<int>` basepairs downstream/3' of feature
 -a/--attribute `<string>`|Specify attribute for name column ('note' by default)
 -h/--help|Print help message
-	
-	
+
+
 ## Troubleshooting
 
-Check the validity of the input GFF3. If there is a formatting error in a particular line, it will either be skipped or will cause a problem. If there is a problem with the 4th column of the BED file (Name), try changing the option argument passed to -a/--attribute. If the input GFF3 file contains "note=" and you do not want the note attribute and the others are not working, try entering a nonsense string of characters to the option argument for -a/--attribute (example: -a lkalfkdjlk). This version was designed to work with a specific GFF3, future versions will be more robust. 
-  
-  
+Check the validity of the input GFF3. If there is a formatting error in a particular line, it will either be skipped or will cause a problem. If there is a problem with the 4th column of the BED file (Name), try changing the option argument passed to -a/--attribute. If the input GFF3 file contains "note=" and you do not want the note attribute and the others are not working, try entering a nonsense string of characters to the option argument for -a/--attribute (example: -a lkalfkdjlk). This version was designed to work with a specific GFF3, future versions will be more robust,.
