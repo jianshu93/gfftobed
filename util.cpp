@@ -2,6 +2,7 @@
 #include <unistd.h>
 #include <getopt.h>
 #include <string>
+#include "util.hpp"
 
 void print_usage(){
 
@@ -33,8 +34,12 @@ void print_usage(){
 
 
 
-int setopts(int argc, char **argv, std::string* feat, int* wfla, int* interv, std::string* token, int*gtflag){
+gfftobed_opts setopts(int argc, char **argv){
+
   int c;
+  gfftobed_opts opts;
+  opts.w_flag =0;
+  opts.gtf_flag=0;
 
     std::string feat_extract;
     std::string ttoken;
@@ -123,20 +128,20 @@ int setopts(int argc, char **argv, std::string* feat, int* wfla, int* interv, st
 
 
 
-    *feat = feat_extract;
-    *wfla = wflag;
-    *gtflag = ftype_flag;
+    opts.feat = feat_extract;
+    opts.w_flag = wflag;
+    opts.gtf_flag = ftype_flag;
 
     if(wflag==1 || wflag ==2 || wflag ==3){
-    *interv = window;
-  } else {*interv = 0;}
+    opts.interval = window;
+  } else {opts.interval = 0;}
 
     if(aflag==1){
-      *token=ttoken;
-    } else {*token = "note";}
+      opts.token=ttoken;
+    } else {opts.token = "note";}
 
 
 
 
-    return 0;
-}
+    return opts;
+} 
