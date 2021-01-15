@@ -38,6 +38,7 @@ if(gff.is_open()){
             gs.scores.push_back(seqscore);
             gs.atts.push_back(attribs);
 
+            /* Search for token in attribs, if not found use whole attribs */
             if(attribs.find(ttok) == std::string::npos){
               gs.geneids.push_back(attribs);
             } else {
@@ -123,7 +124,7 @@ return gs;
 
 
 /* general print function */
-void printgffs(gffs mygff){
+ void printgffs(gffs mygff){
 
     for(size_t i=0; i<10; i++){
         std::cout << mygff.chr[i] << "\t"<< mygff.srcs[i]<< "\t"<< mygff.ftyps[i]<< "\t"<<mygff.starts[i]<< "\t"<<mygff.stops[i]<< "\t"<<mygff.scores[i]<< "\t"<<mygff.strnds[i]<< "\t"<<mygff.frames[i]<<"\t" << mygff.atts[i] << std::endl;
@@ -321,28 +322,29 @@ if(feature == "ncRNA" || feature == "tRNA"){
 
 
 
-/*runner function*/
-void runner(const char* pfile, std::string ff, int wind, int wflag, std::string tok, int gtflag){
 
-  if(gtflag == 0){
-            if(wflag == 0){
-            print_bed(gffread(pfile, tok), ff);
-          } else if(wflag ==1){
-            print_bed_window(gffread(pfile, tok),ff,wind);
-          } else if(wflag ==2){
-            print_bed_upstream(gffread(pfile, tok),ff,wind);
-          } else if(wflag ==3){
-            print_bed_downstream(gffread(pfile, tok),ff,wind);
+
+void runner(const char* pfile, gfftobed_opts cmd_opts){
+
+  if(cmd_opts.gtf_flag == 0){
+            if(cmd_opts.w_flag == 0){
+            print_bed(gffread(pfile, cmd_opts.token), cmd_opts.feat);
+          } else if(cmd_opts.w_flag ==1){
+            print_bed_window(gffread(pfile, cmd_opts.token),cmd_opts.feat,cmd_opts.interval);
+          } else if(cmd_opts.w_flag ==2){
+            print_bed_upstream(gffread(pfile, cmd_opts.token),cmd_opts.feat,cmd_opts.interval);
+          } else if(cmd_opts.w_flag ==3){
+            print_bed_downstream(gffread(pfile, cmd_opts.token),cmd_opts.feat,cmd_opts.interval);
           }
-    } else if (gtflag ==1){
-            if(wflag == 0){
-            print_bed(gtfread(pfile, tok), ff);
-          } else if(wflag ==1){
-            print_bed_window(gtfread(pfile, tok),ff,wind);
-          } else if(wflag ==2){
-            print_bed_upstream(gtfread(pfile, tok),ff,wind);
-          } else if(wflag ==3){
-            print_bed_downstream(gtfread(pfile, tok),ff,wind);
+    } else if (cmd_opts.gtf_flag ==1){
+            if(cmd_opts.w_flag == 0){
+            print_bed(gtfread(pfile, cmd_opts.token), cmd_opts.feat);
+          } else if(cmd_opts.w_flag ==1){
+            print_bed_window(gtfread(pfile, cmd_opts.token),cmd_opts.feat,cmd_opts.interval);
+          } else if(cmd_opts.w_flag ==2){
+            print_bed_upstream(gtfread(pfile, cmd_opts.token),cmd_opts.feat,cmd_opts.interval);
+          } else if(cmd_opts.w_flag ==3){
+            print_bed_downstream(gtfread(pfile, cmd_opts.token),cmd_opts.feat,cmd_opts.interval);
           }
     }
 

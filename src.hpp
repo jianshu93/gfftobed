@@ -1,4 +1,5 @@
 #include <vector>
+#include "util.hpp"
 #ifndef SRC_H
 #define SRC_H
 
@@ -18,7 +19,6 @@ void print_bed(gffs mygff, std::string feature);
 void print_bed_window(gffs mygff, std::string feature, int wind);
 void print_bed_upstream(gffs mygff, std::string feature, int wind);
 void print_bed_downstream(gffs mygff, std::string feature, int wind);
-void runner(const char* pfile, std::string ff, int wind, int wflag, std::string tok, int gtflag);
-
+void runner(const char* pfile, gfftobed_opts cmd_opts);
 
 #endif
