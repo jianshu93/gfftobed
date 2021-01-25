@@ -8,7 +8,7 @@ This program takes an input genome annotation in GFF3 or GTF (1-based) format an
 
 ## Installation
 
-Clone this repository, and `make` or `make clean`
+Clone this repository or download release and `make` or `make clean`
 
 
 ## Usage
