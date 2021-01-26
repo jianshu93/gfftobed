@@ -21,6 +21,20 @@ gffs gffread(const char* pfile, std::string att_tok) {
 
   gffs gs;
 
+  /* Reserve vector space up front */
+
+gs.chr.reserve(2000000);
+gs.srcs.reserve(2000000);
+gs.ftyps.reserve(2000000);
+gs.starts.reserve(2000000);
+gs.stops.reserve(2000000);
+gs.strnds.reserve(2000000);
+gs.frames.reserve(2000000);
+gs.scores.reserve(2000000);
+gs.atts.reserve(2000000);
+gs.geneids.reserve(2000000);
+
+
 if(gff.is_open()){
 /* read the gff without hash lines */
   while(std::getline(gff, line)){
@@ -77,6 +91,19 @@ gffs gtfread(const char* pfile, std::string att_tok) {
 
 
   gffs gs;
+
+  /* Reserve vector space up front*/
+
+gs.chr.reserve(2000000);
+gs.srcs.reserve(2000000);
+gs.ftyps.reserve(2000000);
+gs.starts.reserve(2000000);
+gs.stops.reserve(2000000);
+gs.strnds.reserve(2000000);
+gs.frames.reserve(2000000);
+gs.scores.reserve(2000000);
+gs.atts.reserve(2000000);
+gs.geneids.reserve(2000000);
 
 if(gff.is_open()){
 /* read the gff without hash lines */
