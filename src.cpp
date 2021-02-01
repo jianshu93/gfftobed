@@ -165,7 +165,7 @@ void print_bed(gffs mygff, std::string feature){
 if(feature == "ncRNA" || feature == "tRNA"){
     for(size_t i=0; i<mygff.chr.size(); i++){
       if(mygff.ftyps[i] == feature){
-        std::cout << mygff.chr[i] <<"\t"<< mygff.starts[i]-1 <<"\t"<< mygff.stops[i] << "\t" << mygff.atts[i] << "\t" << mygff.scores[i] << "\t" << mygff.strnds[i] << std::endl;
+        std::cout << mygff.chr[i] <<"\t"<< mygff.starts[i]-1 <<"\t"<< mygff.stops[i] << "\t" << mygff.geneids[i] << "\t" << mygff.scores[i] << "\t" << mygff.strnds[i] << std::endl;
       }
     }
   } else if(feature == "gene" || feature == "exon" || feature == "mRNA" || feature == "CDS"){
@@ -201,7 +201,7 @@ void print_bed_window(gffs mygff, std::string feature, int wind){
 if(feature == "ncRNA" || feature == "tRNA"){
     for(size_t i=0; i<mygff.chr.size(); i++){
       if(mygff.ftyps[i] == feature){
-          std::cout << mygff.chr[i] <<"\t"<< (mygff.starts[i]-wind-1 >=0 ? mygff.starts[i]-wind-1 : 0) <<"\t"<< mygff.stops[i]+wind << "\t" << mygff.atts[i] << "\t" << mygff.scores[i] << "\t" << mygff.strnds[i] << std::endl;
+          std::cout << mygff.chr[i] <<"\t"<< (mygff.starts[i]-wind-1 >=0 ? mygff.starts[i]-wind-1 : 0) <<"\t"<< mygff.stops[i]+wind << "\t" << mygff.geneids[i] << "\t" << mygff.scores[i] << "\t" << mygff.strnds[i] << std::endl;
       }
     }
   } else if(feature == "gene" || feature == "mRNA" ){
@@ -246,7 +246,7 @@ if(feature == "ncRNA" || feature == "tRNA"){
     for(size_t i=0; i<mygff.chr.size(); i++){
       if(mygff.ftyps[i] == feature){
         if(mygff.strnds[i] == "+"){
-          std::cout << mygff.chr[i] <<"\t"<< (mygff.starts[i]-wind-1 >=0 ? mygff.starts[i]-wind-1 : 0) <<"\t"<< mygff.stops[i] << "\t" << mygff.atts[i] << "\t" << mygff.scores[i] << "\t" << mygff.strnds[i] << std::endl;
+          std::cout << mygff.chr[i] <<"\t"<< (mygff.starts[i]-wind-1 >=0 ? mygff.starts[i]-wind-1 : 0) <<"\t"<< mygff.stops[i] << "\t" << mygff.geneids[i] << "\t" << mygff.scores[i] << "\t" << mygff.strnds[i] << std::endl;
         } else if(mygff.strnds[i] == "-"){
           std::cout << mygff.chr[i] <<"\t"<< mygff.starts[i]-1 <<"\t"<< mygff.stops[i]+wind << "\t" << mygff.atts[i] << "\t" << mygff.scores[i] << "\t" << mygff.strnds[i] << std::endl;
         }
@@ -301,9 +301,9 @@ if(feature == "ncRNA" || feature == "tRNA"){
     for(size_t i=0; i<mygff.chr.size(); i++){
       if(mygff.ftyps[i] == feature){
         if(mygff.strnds[i] == "+"){
-          std::cout << mygff.chr[i] <<"\t"<< mygff.starts[i]-1 <<"\t"<< mygff.stops[i]+wind << "\t" << mygff.atts[i] << "\t" << mygff.scores[i] << "\t" << mygff.strnds[i] << std::endl;
+          std::cout << mygff.chr[i] <<"\t"<< mygff.starts[i]-1 <<"\t"<< mygff.stops[i]+wind << "\t" << mygff.geneids[i] << "\t" << mygff.scores[i] << "\t" << mygff.strnds[i] << std::endl;
         } else if(mygff.strnds[i] == "-"){
-          std::cout << mygff.chr[i] <<"\t"<< (mygff.starts[i]-wind-1 >=0 ? mygff.starts[i]-wind-1 : 0) <<"\t"<< mygff.stops[i] << "\t" << mygff.atts[i] << "\t" << mygff.scores[i] << "\t" << mygff.strnds[i] << std::endl;
+          std::cout << mygff.chr[i] <<"\t"<< (mygff.starts[i]-wind-1 >=0 ? mygff.starts[i]-wind-1 : 0) <<"\t"<< mygff.stops[i] << "\t" << mygff.geneids[i] << "\t" << mygff.scores[i] << "\t" << mygff.strnds[i] << std::endl;
         }
       }
     }
