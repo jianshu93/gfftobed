@@ -40,7 +40,7 @@ if(gff.is_open()){
   while(std::getline(gff, line)){
     if(line.find(hsh) == std::string::npos){
           std::stringstream myline(line);
-          while(myline >> seqid >> src >> ftyp >> seqstart >> seqstop >> seqscore >> seqstrand >> seqframe && std::getline(myline,attribs)){
+          while(myline >> seqid >> src >> ftyp >> seqstart >> seqstop >> seqscore >> seqstrand >> seqframe && std::getline(myline >> std::ws,attribs)){
 
             gs.chr.push_back(seqid);
             gs.srcs.push_back(src);
@@ -110,7 +110,7 @@ if(gff.is_open()){
   while(std::getline(gff, line)){
     if(line.find(hsh) == std::string::npos){
           std::stringstream myline(line);
-          while(myline >> seqid >> src >> ftyp >> seqstart >> seqstop >> seqscore >> seqstrand >> seqframe && std::getline(myline,attribs)){
+          while(myline >> seqid >> src >> ftyp >> seqstart >> seqstop >> seqscore >> seqstrand >> seqframe && std::getline(myline >> std::ws,attribs)){
 
             gs.chr.push_back(seqid);
             gs.srcs.push_back(src);
