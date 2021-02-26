@@ -3,7 +3,19 @@ Convert GFF3/GTF to BED
 
 
 
-This program takes an input genome annotation in GFF3 or GTF (1-based) format and converts specific features to a 6 column BED format (0-based) while retaining any desired field of the attributes column of the annotation file. It is useful when genomic intervals around specific features are needed.
+This program takes an input genome annotation in GFF3 or GTF (1-based) format and converts specific features to a 6 column BED format (0-based) while retaining any desired field of the attributes column of the annotation file. It is useful when genomic intervals around specific features and unique IDs are needed. It can also add a window around each feature. 
+
+
+
+Manipulating text files such as GFF and GTF is not always difficult but there are cases where a good ol' `awk` or `grep` just won't do the trick. 
+Consider a situation where you a bed file containing all of the "gene" features from a GTF while retaining the "gene_name".
+Sure, `grep "gene" gencode.vM25.annotation.gtf | awk 'FS="\t"{print $1"\t"$4-1"\t"$5"\t"$9"\t"$8"\t"$7}'` gets you close but you would encounter two problems: 1. the number of lines in the bed file does not equal the number of "gene" features in the GTF. 2. You printed the entire 9th column of the GTF. 
+
+To solve this, you could try something like this: 
+
+`awk 'FS="\t"{if($3=="gene") print $0}' gencode.vM25.annotation.gtf | awk 'FS="\t"{print $1"\t"$4-1"\t"$5"\t"substr($9,index($9, "gene_name \"")+11,index(substr($9,index($9, "gene_name \"")+11),"\";")-1)"\t"$8"\t"$7  }'`
+
+It works, but it is terrible. `gfftobed` does this stuff for you and is faster. 
 
 
 ## Installation
